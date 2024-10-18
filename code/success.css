@@ -1,0 +1,63 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f8fa;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    transition: background-color 0.5s;
+}
+
+.success-message {
+    text-align: center;
+    background-color: white;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    animation: fadeIn 0.5s ease-in-out; /* Добавление анимации при появлении */
+}
+
+.success-message h1 {
+    color: #1da1f2;
+    margin-bottom: 15px;
+    font-size: 24px; /* Увеличенный размер заголовка */
+    transition: color 0.3s; /* Плавная смена цвета заголовка */
+}
+
+.success-message h1:hover {
+    color: #1c91db; /* Цвет заголовка при наведении */
+}
+
+.home-button {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #1da1f2;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s, transform 0.2s; /* Плавная анимация для кнопки */
+}
+
+.home-button:hover {
+    background-color: #1c91db;
+    transform: scale(1.05); /* Увеличение кнопки при наведении */
+}
+
+/* Анимация для появления сообщения */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px); /* Движение вверх */
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0); /* Возвращение на место */
+    }
+}

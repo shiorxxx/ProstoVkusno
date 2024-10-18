@@ -1,0 +1,104 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+}
+
+.recipes-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding: 20px;
+}
+
+.recipe {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    margin: 10px;
+    padding: 10px;
+    width: 300px;
+    cursor: pointer;
+    transition: transform 0.2s, background-color 0.3s; /* Плавный переход для фона */
+}
+
+.recipe:hover {
+    transform: scale(1.02);
+    background-color: #f9f9f9; /* Светлый фон при наведении */
+}
+
+.recipe-image {
+    width: 100%;
+    border-radius: 8px;
+}
+
+.recipe-title {
+    font-size: 1.25rem; /* Изменено на rem для масштабирования */
+    margin: 10px 0;
+}
+
+.recipe-details {
+    display: flex;
+    justify-content: space-between;
+}
+
+.user-avatar {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+}
+
+.username {
+    margin-left: 5px;
+}
+
+.recipe-tags-time {
+    text-align: right;
+}
+
+.recipe-tags {
+    font-size: 0.875rem; /* Изменено на rem */
+    color: #888;
+}
+
+.recipe-time {
+    font-size: 0.75rem; /* Изменено на rem */
+    color: #bbb;
+}
+
+/* Стили для модального окна */
+.modal_r {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content_r {
+    background-color: #fff;
+    margin: 15% auto;
+    padding: 20px;
+    border-radius: 8px;
+    width: 80%;
+    max-width: 600px;
+    text-align: center;
+    position: relative;
+}
+
+.close-modal_r {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+/* Фокусное состояние для интерактивных элементов */
+.recipe:focus,
+.close-modal_r:focus {
+    outline: 2px solid #1da1f2; /* Подсветка при фокусе */
+}
