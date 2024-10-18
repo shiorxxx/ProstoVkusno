@@ -1,0 +1,253 @@
+:root {
+    --background-color: #f5f8fa;
+    --sidebar-background: #15202b;
+    --sidebar-header: #1da1f2;
+    --link-hover: #1c2731;
+    --button-background: #1da1f2;
+    --button-hover: #1c2731;
+    --text-color: white;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background: linear-gradient(135deg, #f5f8fa, #e9eff2);
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+
+.sidebar {
+    position: fixed;
+    width: 240px;
+    left: -240px; /* Изначально скрыт */
+    height: 100%;
+    background: linear-gradient(135deg, #1a1a1a, #2a2a2a); /* Градиентный фон */
+    color: white;
+    transition: left 0.3s ease, box-shadow 0.3s ease; /* Плавное открытие */
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 4px 0 10px rgba(0, 0, 0, 0.3); /* Тень */
+}
+.sidebar.active {
+    left: 0; /* Показываем сайдбар */
+    box-shadow: 4px 0 10px rgba(0, 0, 0, 0.5); /* Увеличиваем тень при открытии */
+}
+
+.sidebar-header {
+    background-color: #1da1f2; /* Цвет заголовка */
+    color: white;
+    padding: 20px; /* Увеличенные отступы */
+    text-align: center;
+    font-size: 24px; /* Увеличенный размер шрифта */
+}
+
+nav ul {
+    list-style: none;
+    padding: 0; /* Убираем отступы */
+}
+
+nav a {
+    display: flex;
+    align-items: center;
+    color: white;
+    padding: 15px 20px;
+    text-decoration: none;
+    transition: background-color 0.3s, padding-left 0.3s; /* Плавные переходы */
+}
+
+nav a:hover {
+    background-color: rgba(255, 255, 255, 0.1); /* Полупрозрачный фон при наведении */
+    padding-left: 25px; /* Сдвиг при наведении */
+}
+.avatar-sidebar {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin: 20px auto;
+    display: block;
+}
+
+.sidebar nav ul li p {
+    text-align: center;
+    margin-top: 10px;
+    font-size: 16px;
+}
+
+/* Footer сайдбара */
+footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    padding: 10px;
+    background-color: #444;
+    text-align: center;
+}
+.logout-btn {
+    background-color: #ff6347;
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.logout-btn:hover {
+    background-color: #ff4500;
+}
+
+.sidebar-toggle {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    cursor: pointer;
+    z-index: 1001;
+}
+
+.sidebar-toggle-checkbox {
+    display: none;
+}
+
+#check:checked ~ .sidebar {
+    left: 0;
+}
+
+.main-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    padding: 20px;
+}
+
+.logo {
+    max-width: 150px;
+    margin-bottom: 30px;
+}
+
+.buttons {
+    display: flex;
+    gap: 20px;
+}
+
+.recipe-button {
+    background: linear-gradient(135deg, #1da1f2, #1c91db);
+    border: none;
+    border-radius: 8px;
+    color: #fff;
+    padding: 12px 24px;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.recipe-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+@media (max-width: 768px) {
+    .sidebar {
+        width: 200px;
+    }
+    .logo {
+        max-width: 120px;
+    }
+}
+
+@media (max-width: 480px) {
+    .sidebar {
+        width: 100%;
+        left: -100%;
+    }
+
+    #check:checked ~ .sidebar {
+        left: 0;
+    }
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1002;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+    background-color: white;
+    margin: 15% auto;
+    padding: 20px;
+    width: 80%;
+    max-width: 500px;
+    border-radius: 8px;
+    text-align: center;
+    animation: fadeIn 0.3s;
+}
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10%);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+.current-avatar {
+    display: block;
+    margin: 0 auto 20px;
+    max-width: 100px;
+    border-radius: 50%;
+}
+
+.avatar-selection {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.avatar-option {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: transform 0.3s;
+}
+
+.avatar-option:hover {
+    transform: scale(1.1);
+}
+
+.submit-btn {
+    background-color: #1da1f2;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+    display: block;
+    margin: 0 auto;
+}
+
+.submit-btn:hover {
+    background-color: #1a91db;
+    transform: scale(1.05);
+}

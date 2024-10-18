@@ -1,0 +1,573 @@
+/* Общие стили */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f8fa;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* Шапка */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background-color: #ffffff;
+    border-bottom: 1px solid #ccc;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+}
+
+.center-header {
+    flex-grow: 1;
+    text-align: center;
+}
+
+.header .logo {
+    height: 100px; /* Увеличенный размер логотипа */
+    margin: 0 auto;
+}
+
+.upload-btn {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: #1da1f2;
+}
+
+.upload-text {
+    display: none; /* Скрываем текст на мобильных устройствах */
+}
+
+.upload-icon {
+    background-color: #1da1f2;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 50%;
+    font-size: 24px;
+}
+
+/* Подшапка */
+.sub-header {
+    text-align: center;
+    margin-top: 110px;
+    padding: 20px;
+}
+
+.sub-header .title {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.search-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.search-input {
+    width: 300px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-right: 10px;
+}
+
+.sort-button {
+    background-color: #1da1f2;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 25px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    position: relative; /* Важно для позиционирования меню под кнопкой */
+}
+
+.sort-button:hover {
+    background-color: #007bb5;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+    transform: scale(1.05);
+}
+
+/* Красивая кнопка сортировки */
+.sort-button {
+    background-color: #1da1f2;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 25px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    position: relative; /* Важно для кнопки */
+}
+
+.sort-button:hover {
+    background-color: #007bb5;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+    transform: scale(1.05);
+}
+
+/* Меню сортировки */
+.sort-menu {
+    display: none;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    padding: 10px;
+    position: absolute;
+    top: 100%; /* Расположено прямо под кнопкой */
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+    width: max-content;
+}
+
+.sort-menu button {
+    background-color: #f5f5f5;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    margin: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+    width: 100%;
+}
+
+.sort-menu button:hover {
+    background-color: #1da1f2;
+    color: white;
+}
+
+/* Анимации */
+.fade-in {
+    opacity: 0;
+    animation: fadeIn 0.3s forwards;
+}
+
+.fade-out {
+    animation: fadeOut 0.3s forwards;
+}
+
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeOut {
+    to {
+        opacity: 0;
+    }
+}
+
+/* Рецепты */
+/* Общие стили рецептов */
+#recipes { 
+    display: flex;
+    flex-wrap: wrap; /* Позволяет карточкам переноситься на новую строку */
+    gap: 20px; /* Расстояние между рецептами */
+    justify-content: space-between; /* Распределение карточек по ширине */
+    padding: 20px;
+    margin: 20px auto;
+    max-width: 1200px;
+}
+
+.recipe {
+    flex: 1 1 300px; /* Минимальная ширина 300px, карточки будут растягиваться по мере увеличения экрана */
+    max-width: 30%; /* Ограничение ширины карточек (три в ряду) */
+    box-sizing: border-box; /* Чтобы padding не влиял на ширину */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Тень для карточек */
+    transition: transform 0.3s, box-shadow 0.3s; /* Плавные переходы */
+}
+
+.recipe-photo {
+    width: 100%;
+    height: 200px; /* Фиксированная высота */
+    object-fit: cover; /* Обрезка изображения для сохранения пропорций */
+    border-radius: 10px;
+    transition: transform 0.3s ease;
+}
+
+.recipe-body {
+    flex-grow: 1; /* Занимаем оставшееся пространство */
+    text-align: center; /* Центрируем заголовок рецепта */
+    margin: 0 20px;
+}
+
+.recipe-header {
+    text-align: center;
+    margin-left: 10px;
+}
+
+.recipe-avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease;
+}
+
+.recipe-nickname {
+    font-size: 14px;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+/* Эффекты при наведении */
+.recipe:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+}
+
+.recipe-photo:hover {
+    transform: scale(1.05);
+}
+
+.recipe-avatar:hover {
+    transform: scale(1.1);
+}
+
+.recipe-title:hover {
+    color: #1da1f2;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    .recipe {
+        max-width: 48%; /* Две карточки в ряду */
+    }
+}
+
+@media (max-width: 480px) {
+    .recipe {
+        max-width: 100%; /* Одна карточка в ряду */
+    }
+}
+
+
+/* Модальное окно */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out; /* Добавлена анимация для плавного появления */
+}
+.modal.active {
+    display: block;
+    opacity: 1;
+}
+.modal-content {
+    background-color: white;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    width: 80%;
+    max-width: 500px;
+    text-align: center;
+}
+.modal.active .modal-content {
+    transform: translateY(0); /* Плавно выдвигаем модальное окно вверх */
+}
+
+.current-avatar {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin-bottom: 20px;
+}
+
+.avatar-selection {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.avatar-option {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    cursor: pointer;
+    border: 2px solid transparent;
+}
+
+.avatar-option:hover {
+    border-color: #1da1f2;
+}
+
+.submit-btn {
+    padding: 10px 20px;
+    background-color: #1da1f2;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+/* Сайдбар */
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: -250px;
+    width: 250px;
+    height: 100%;
+    background-color: #333;
+    color: white;
+    transition: transform 0.3s ease-in-out; /* Добавлена анимация */
+    transform: translateX(-250px); /* Скрываем сайдбар */
+    z-index: 1001;
+}
+
+.sidebar-header {
+    padding: 20px;
+    background-color: #444;
+    text-align: center;
+}
+
+.sidebar nav ul {
+    list-style-type: none;
+    padding: 20px 0;
+}
+
+.sidebar nav ul li {
+    padding: 15px 20px;
+}
+
+.sidebar nav ul li a {
+    color: white;
+    text-decoration: none;
+    display: block;
+}
+
+.sidebar nav ul li a:hover {
+    background-color: #555;
+}
+
+.sidebar-toggle {
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    background-color: #1da1f2;
+    padding: 10px;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    z-index: 1002;
+}
+
+.sidebar.active {
+    left: 0;
+    transform: translateX(0);
+}
+
+/* Централизованный аватар в сайдбаре */
+.avatar-sidebar {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin: 20px auto;
+    display: block;
+}
+
+.sidebar nav ul li p {
+    text-align: center;
+    margin-top: 10px;
+    font-size: 16px;
+}
+
+/* Footer сайдбара */
+footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    padding: 10px;
+    background-color: #444;
+    text-align: center;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    .recipe {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .recipe-photo {
+        width: 100%;
+        height: auto;
+        margin-top: 10px;
+    }
+
+    .search-input {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    .sort-button {
+        width: 100%;
+    }
+
+    .header .logo {
+        height: 60px;
+    }
+}
+
+@media (max-width: 480px) {
+    .recipe {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .recipe-photo {
+        width: 100%;
+        height: auto;
+        margin-top: 10px;
+    }
+}
+/* Модальное окно для рецепта */
+.modal_recipe {
+    display: none; /* По умолчанию скрыто */
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.7); /* Тёмный фон */
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-recipe-content {
+    background-color: white;
+    padding: 20px;
+    margin: auto;
+    border-radius: 10px;
+    max-width: 600px;
+    width: 90%;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    overflow-y: auto;
+    max-height: 80%; /* Прокрутка для длинного контента */
+}
+
+/* Кнопка закрытия */
+.close-btn-recipe {
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* Кнопка для добавления в избранное */
+.favorite-btn {
+    background-color: #f5f5f5;
+    color: #e74c3c;
+    border: none;
+    padding: 10px;
+    font-size: 18px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.favorite-btn:hover {
+    background-color: #e74c3c;
+    color: white;
+}
+
+/* Стиль списка ингредиентов */
+#modal-recipe-ingredients {
+    list-style-type: disc;
+    margin-left: 20px;
+}
+
+/* Стиль для шагов приготовления */
+.step {
+    margin-bottom: 20px;
+}
+
+.step p {
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+/* Стиль для изображений шагов */
+.step-image {
+    max-width: 100%;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+h2, h3 {
+    margin: 10px 0;
+}
+
+#modal-recipe-steps img {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 10px;
+}
+
+
+/* Адаптивные стили для разных экранов */
+@media (max-width: 768px) {
+    .modal-recipe-content {
+        max-width: 95%; /* Увеличиваем ширину для более узких экранов */
+        width: 95%;
+        padding: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .modal-recipe-content {
+        max-width: 100%; /* На совсем узких экранах заполняем всю ширину */
+        width: 100%;
+        border-radius: 0; /* Убираем закругления, чтобы окно выглядело лучше на мобильных устройствах */
+        padding: 10px;
+    }
+
+    .close-btn-recipe {
+        font-size: 24px;
+    }
+
+    h2, h3 {
+        font-size: 18px; /* Уменьшаем шрифты на мобильных устройствах */
+    }
+
+    #modal-recipe-steps img {
+        max-width: 100%;
+        height: auto;
+    }
+}
